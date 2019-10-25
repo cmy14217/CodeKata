@@ -1,7 +1,9 @@
 package pers.chen.kata.anagram;
 
 import java.util.List;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class SignedAnagramWords {
 
   private String signature;

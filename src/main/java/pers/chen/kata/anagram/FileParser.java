@@ -9,8 +9,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+@Component
 public class FileParser {
 
   public Map<String, List<String>> parse() throws IOException {
@@ -24,7 +26,7 @@ public class FileParser {
         Arrays.stream(splitWords).forEach(word -> {
           if(!StringUtils.isEmpty(word)) {
             String signature = getSignature(word);
-            addWordToWordsOfSignature(signedWords, signature, word);
+            addWordToWordsMapOfSameSignature(signedWords, signature, word);
           }
         });
 
@@ -37,7 +39,7 @@ public class FileParser {
     return Arrays.stream(word.split("")).sorted().reduce((a,b) -> a + b).orElse(word);
   }
 
-  private void addWordToWordsOfSignature(Map<String, List<String>> map, String key, String value) {
+  private void addWordToWordsMapOfSameSignature(Map<String, List<String>> map, String key, String value) {
     List<String> values = map.get(key);
     if (values == null) {
       values = new ArrayList<>();

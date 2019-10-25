@@ -8,13 +8,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import javax.annotation.PostConstruct;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AnagramWordsProcessor {
 
+  @Autowired
+  private FileParser fileParser;
+
+  @Getter
+  @Setter
   private List<SignedAnagramWords> signedAnagramWords;
 
+  @PostConstruct
   public void sortAnagramWordsBySignature() throws IOException {
-    Map<String, List<String>> wordsOfSameSignature = new FileParser().parse();
+    Map<String, List<String>> wordsOfSameSignature = fileParser.parse();
     this.signedAnagramWords = wordsOfSameSignature.entrySet()
         .stream()
         .sorted(Comparator.comparing(Entry::getKey))
