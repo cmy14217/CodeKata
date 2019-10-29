@@ -73,4 +73,19 @@ class AnagramWordsProcessorTest {
     //Then
     assertEquals(newArrayList(), anagrams);
   }
+
+  @Test
+  void should_return_two_word_anagrams_of_word_when_call_get_anagrams_of_word_given_has_anagrams_of_input_word() {
+    SignedAnagramWords signedAnagramWords1 = new SignedAnagramWords("accitt", newArrayList("tactic", "tictac"));
+    SignedAnagramWords signedAnagramWords2 = new SignedAnagramWords("ainv", newArrayList("ivan"));
+    SignedAnagramWords signedAnagramWords3 = new SignedAnagramWords("blmosy", newArrayList("symbol"));
+    SignedAnagramWords signedAnagramWords4 = new SignedAnagramWords("cdeirt", newArrayList("direct", "credit"));
+    anagramWordsProcessor.setSignedAnagramWords(newArrayList(signedAnagramWords1, signedAnagramWords2, signedAnagramWords3, signedAnagramWords4));
+
+    //When
+    List<String> anagrams = anagramWordsProcessor.getTwoAnagramsOfWord("bolsmydirect");
+
+    //Then
+    assertEquals(newArrayList("symbol--direct", "symbol--credit"), anagrams);
+  }
 }

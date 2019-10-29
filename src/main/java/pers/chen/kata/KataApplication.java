@@ -19,8 +19,10 @@ public class KataApplication {
     System.out.println("Please input your word: ");
     while(scanner.hasNext()) {
       String word = scanner.next();
-      List<String> anagrams = anagramWordsProcessor.getAnagramsOfWord(word);
-      System.out.println("Anagrams of " + word + " are: " + anagrams);
+      List<String> oneAnagrams = anagramWordsProcessor.getAnagramsOfWord(word);
+      List<String> twoAnagrams = anagramWordsProcessor.getTwoAnagramsOfWord(word);
+      System.out.println("One-word anagrams of " + word + " are: " + oneAnagrams);
+      System.out.println("Two-words anagrams of " + word + " are: " + twoAnagrams);
       System.out.println("\nPlease input your word: ");
     }
   }
