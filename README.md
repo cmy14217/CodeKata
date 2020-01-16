@@ -1,4 +1,4 @@
-Anagram
+KATA1: Anagram
 
 1. find one-word anagrams of word from a file.
    - make the sorted characters of a word as its signature
@@ -13,7 +13,7 @@ Anagram
    - combine each two and distinguish if its same with the given signature
    
    
-Args
+KATA2: Args
 
 You should write a parser for this kind of arguments. This parser takes a schema detailing what arguments the program expects. 
 The schema specifies the number and types of flags and values the program expects.
